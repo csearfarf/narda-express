@@ -43,7 +43,7 @@ const handleJWT = {
         }
     },
     updateRefreshToken: async function (username, role, refreshToken) {
-        const sql = "SELECT * FROM REFRESHTOKEN WHERE username = ? AND user_type = ? "
+        const sql = "SELECT * FROM refreshtoken WHERE username = ? AND user_type = ? "
         const [rows, fields] = await pool.query(sql, [username,role])
         if (rows.length < 1){  // if not existing insert new token for user :) 
             const sql = "INSERT INTO `refreshtoken` ( `username`, `token`, `user_type`,`date_created`) VALUES ( ?, ?, ? ,now())"
