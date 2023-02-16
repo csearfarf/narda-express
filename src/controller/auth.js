@@ -16,7 +16,7 @@ const authController = {
             }
 
 
-            const sql = "SELECT * FROM ADMIN WHERE USERNAME = ? "
+            const sql = "SELECT * FROM admin WHERE USERNAME = ? "
             const [rows, fields] = await pool.query(sql, [req.body.username])
 
             if (rows.length < 1) return res.status(400).send({ success: false, message: "User not found" })

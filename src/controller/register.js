@@ -16,7 +16,7 @@ const registerController = {
                 return res.status(400).send({success:false,message:errorMessage})
             } 
           
-            const sql = "SELECT * FROM ADMIN WHERE USERNAME = ? "
+            const sql = "SELECT * FROM admin WHERE USERNAME = ? "
             const [rows,fields] = await pool.query(sql,[req.body.username])
 
             if(rows.length>0) return res.status(400).send({success:false,message:"Username is already taken, Please use other username"})
