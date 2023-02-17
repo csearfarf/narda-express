@@ -30,7 +30,7 @@ const handleJWT = {
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
         if (token == null) {
-            return res.status(401).send({success:false,message:"Access Denied"});
+            return res.status(400).send({success:false,message:"Invalid Token"});
         }
 
         try {
@@ -39,7 +39,7 @@ const handleJWT = {
             // console.log(user)
             next();
         } catch (err) {
-            return res.status(400).send({success:false,message:"Invalid Token"});
+            return res.status(401).send({success:false,message:"Access Denied"});
         }
     },
     updateRefreshToken: async function (username, role, refreshToken) {
